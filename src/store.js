@@ -1,6 +1,6 @@
 import {createStoreon} from 'storeon'
 import {v4 as uuidv4} from 'uuid'
-import {} from '@storeon/localstorage'
+import { persistState } from '@storeon/localstorage'
 
 let note = store => {
     store.on('@init',() => ({
@@ -18,3 +18,10 @@ let note = store => {
         tasks: tasks.filter(note => note.id === id)
     }))
 }
+
+const store = createStoreon([
+    tasks,
+    persistState(['notes'])
+])
+
+export default store;

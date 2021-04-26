@@ -2,7 +2,7 @@ import {createStoreon} from 'storeon'
 import {v4 as uuidv4} from 'uuid'
 import { persistState } from '@storeon/localstorage'
 
-let note = store => {
+let tasks = store => {
     store.on('@init',() => ({
         tasks:[
             {id:uuidv4(),item:"first task"},
@@ -14,14 +14,14 @@ let note = store => {
             tasks: [...tasks,{id:uuidv4(),item:task}] 
         }
     })
-    store.on('deleteTask',({tasks,id})=>({
-        tasks: tasks.filter(note => note.id === id)
+    store.on('deleteTask',({tasks},id)=>({
+        tasks: tasks.filter(task => task.id !== id)
     }))
 }
 
 const store = createStoreon([
     tasks,
-    persistState(['notes'])
+    persistState(['tasks'])
 ])
 
 export default store;

@@ -1,10 +1,15 @@
 import React from 'react'
 import {render} from 'react-dom'
+import {StoreContext} from 'storeon/react'
+import Tasks from './Components/Tasks'
+import store from './store'
 
 const App = () => {
     return(
         <>
-            HOLAS
+         <StoreContext.Provider value={store}>
+            <Tasks/>
+         </StoreContext.Provider>
         </>
     )
 }

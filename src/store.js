@@ -11,7 +11,7 @@ let note = store => {
     }))
     store.on('addTask',({tasks},task)=>{
         return {
-            tasks: [...tasks,{id:uuidv4().item:task}] 
+            tasks: [...tasks,{id:uuidv4(),item:task}] 
         }
     })
     store.on('deleteTask',({tasks,id})=>({

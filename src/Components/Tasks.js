@@ -22,9 +22,20 @@ const Tasks = () => {
     return (
         <section>
             <header>Tasks</header>
-            <div className="addNote">
-
+            <div className="addTask">
+                <textarea onChange={handleInput} value={value} />
+                <button onClick={()=>submit()}>Add new task</button>
             </div>
+            <ul>
+                {tasks.map(task => (
+                    <li key={task.id}>
+                        <div className='todo'>
+                            <p>{task.item}</p>
+                            <button onClick={()=>deleteTask(task.id)} >Delete</button>
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </section>
     )
 }
